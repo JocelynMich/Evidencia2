@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/table.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap" rel="stylesheet">
+    <title>Direccion</title>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo montecarlo-regular">
+            <h1>Datos de Direccion</h1>
+        </div>
+    </header>
+    <table id="tablaDireccion">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Codigo Postal</th>
+                <th>Calle</th>
+                <th>Num. Exterior</th>
+                <th>Num. Interior</th>
+                <th>Ciudad</th>
+                <th>Fecha de Creación</th>
+                <th>Creado Por (ID)</th>
+                <th>Fecha de Actualización</th>
+                <th>Actualizado Por (ID)</th>
+                <th>Fecha de Eliminación</th>
+                <th>Eliminado Por (ID)</th>
+            </tr>
+        </thead>
+        <tbody id="tbodyDatosC">
+            <!-- Aquí se insertarán los datos dinámicamente -->
+        </tbody>
+    </table>
+
+    <script>
+        fetch("http://localhost:3000/api/direction")
+            .then(response => response.json())
+            .then(data => {
+                let tablaBody = document.querySelector('#tablaDireccion tbody');
+
+                // Limpiar el contenido de la tabla antes de agregar nuevos datos
+                tablaBody.innerHTML = '';
+
+                // Iterar sobre los datos y agregar filas a la tabla
+                data.forEach(direccion => {
+                    let fila = document.createElement('tr');
+
+                    Object.values(direccion).forEach(value => {
+                        let celda = document.createElement('td');
+                        celda.textContent = value;
+                        fila.appendChild(celda);
+                    });
+
+                    tablaBody.appendChild(fila);
+                });
+            })
+            .catch(error => {
+                console.error('Error al obtener los datos de direccion:', error);
+            });
+
+    </script>
+</body>
+
+</html>

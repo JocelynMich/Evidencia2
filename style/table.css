@@ -1,0 +1,51 @@
+body {
+    background-color: #ff9267; 
+}
+
+h1{
+    text-align: center;
+    color:#ffffff;
+    background-color: #ff764c;
+    margin:20px;
+}
+
+.montecarlo-regular {
+    font-family: "MonteCarlo", cursive;
+    font-weight: 700;
+    font-style: normal;
+    font-size: large;
+}
+
+.table {
+    width: 100%; /* Ocupar todo el ancho disponible */
+    margin: auto;
+    overflow-x: auto;
+     /* Agregar barra de desplazamiento horizontal si es necesario */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color:#f8af93;
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 14px; /* Tamaño de fuente base */
+}
+
+th {
+    background-color: #fa8078;
+}
+
+@media (min-width: 1024px) {
+    .table {
+        width: 80%; /* Reducir el ancho de la tabla en pantallas más grandes */
+    }
+
+    th, td {
+        font-size: 16px; /* Aumentar el tamaño de fuente en pantallas más grandes */
+    }
+}
